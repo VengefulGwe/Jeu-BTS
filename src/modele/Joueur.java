@@ -146,7 +146,7 @@ public class Joueur extends Objet implements Global {
 		this.message.setBounds(posX-10, posY+HAUTEURPERSO, LARGEURPERSO+10, HAUTEURMESSAGE);
 		this.message.setText(pseudo+" : "+vie);
 		// positionnement et remplissage du messageB sous le perosnnage
-		this.messageB.setBounds(posX-20, posY+HAUTEURPERSO, LARGEURPERSO+10, HAUTEURMESSAGE*2);
+		this.messageB.setBounds(posX-10, posY+HAUTEURPERSO, LARGEURPERSO+10, HAUTEURMESSAGE*3);
 		this.messageB.setText("boules"+" : "+NbrBoules);
 		// demande d'envoi à tous des modifications d'affichage
 		this.jeuServeur.envoiJeuATous();
@@ -274,6 +274,7 @@ public class Joueur extends Objet implements Global {
 		if(super.jLabel != null) {
 			super.jLabel.setVisible(false);
 			this.message.setVisible(false);
+			this.messageB.setVisible(false);
 			this.boule.getjLabel().setVisible(false);
 			this.jeuServeur.envoiJeuATous();
 		}
