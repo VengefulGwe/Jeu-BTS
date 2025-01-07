@@ -165,7 +165,7 @@ public interface Global {
 	/**
 	 * gain de boules quand un joueur est tué
 	 */
-	int GAINMORT = 2;
+	int GAINMORT = 4;
 	/**
 	 * nombre de murs dans l'arène
 	 */

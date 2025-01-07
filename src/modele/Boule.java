@@ -49,6 +49,7 @@ public class Boule extends Objet implements Global, Runnable {
 	public void tireBoule(Joueur attaquant, Collection lesMurs) {
 		this.lesMurs = lesMurs;
 		this.attaquant = attaquant;
+		this.attaquant.perteBoule();
 		// positionnement de la boule
 		if(attaquant.getOrientation()==GAUCHE) {
 			posX = attaquant.getPosX() - LARGEURBOULE - 1 ;
@@ -96,6 +97,7 @@ public class Boule extends Objet implements Global, Runnable {
 			// gestion du gain et de la perte de vie
 			victime.perteVie();
 			attaquant.gainVie();
+			attaquant.gainBoules();
 			// joue l'animation de la victime blessée
 			for(int k=1 ; k<=NBETAPESTOUCHE ; k++) {
 				victime.affiche(TOUCHE, k);
@@ -109,6 +111,7 @@ public class Boule extends Objet implements Global, Runnable {
 				for(int k=1 ; k<=NBETAPESMORT ; k++) {
 					victime.affiche(MORT, k);
 					pause(80, 0);
+				attaquant.gainMort();
 				}
 			} else {
 				// remettrele joueur dans la position de repos (marche)
