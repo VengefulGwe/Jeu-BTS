@@ -112,6 +112,7 @@ public class Joueur extends Objet implements Global {
 		// demande d'ajout du label du personnage, du message et de la boule dans l'arène du serveur
 		this.jeuServeur.ajoutJLabelJeuArene(jLabel);
 		this.jeuServeur.ajoutJLabelJeuArene(message);
+		this.jeuServeur.ajoutJLabelJeuArene(messageB);
 		this.jeuServeur.ajoutJLabelJeuArene(boule.getjLabel());
 		// demande d'affichage du personnage
 		this.affiche(MARCHE, this.etape);
