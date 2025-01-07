@@ -104,7 +104,7 @@ public class Joueur extends Objet implements Global {
 		// création du label du messageB sous le message
 		this.messageB = new JLabel();
 		messageB.setHorizontalAlignment(SwingConstants.CENTER);
-		messageB.setFont(new Font("Dialog", Font.PLAIN, 8));
+		messageB.setFont(new Font("Dialog", Font.PLAIN, 16));
 		// création de la boule
 		this.boule = new Boule(this.jeuServeur);
 		// calcul de la première position du personnage
