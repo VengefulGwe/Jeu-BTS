@@ -155,6 +155,18 @@ public interface Global {
 	 */
 	int PERTE = 2 ; 
 	/**
+	 * boules de départ pour tous les joueurs
+	 */
+	int BOULESDB = 10; 
+	/**
+	 * gain de boules lors d'attaque réussie
+	 */
+	int GAINBOULES = 2; 
+	/**
+	 * gain de boules quand un joueur est tué
+	 */
+	int GAINMORT = 2;
+	/**
 	 * nombre de murs dans l'arène
 	 */
 	int NBMURS = 20;
