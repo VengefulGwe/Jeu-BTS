@@ -30,6 +30,10 @@ public class Joueur extends Objet implements Global {
 	 */
 	private JLabel message;
 	/**
+	 * message qui s'affiche sous le personnage (contenant boules et nombre de boules)
+	 */
+	private JLabel messageB;
+	/**
 	 * instance de JeuServeur pour communiquer avec lui
 	 */
 	private JeuServeur jeuServeur ;
@@ -46,6 +50,10 @@ public class Joueur extends Objet implements Global {
 	 */
 	private int vie ; 
 	/**
+	 * nombre de boules restantes du joueur
+	 */
+	private int NbrBoules ;
+	/**
 	 * tourné vers la gauche (0) ou vers la droite (1)
 	 */
 	private int orientation ;
@@ -57,6 +65,7 @@ public class Joueur extends Objet implements Global {
 	public Joueur(JeuServeur jeuServeur) {
 		this.jeuServeur = jeuServeur;
 		this.vie = MAXVIE;
+		this.NbrBoules = BOULESDB;
 		this.etape = 1;
 		this.orientation = DROITE;
 	}
@@ -92,6 +101,10 @@ public class Joueur extends Objet implements Global {
 		this.message = new JLabel();
 		message.setHorizontalAlignment(SwingConstants.CENTER);
 		message.setFont(new Font("Dialog", Font.PLAIN, 8));
+		// création du label du messageB sous le message
+		this.messageB = new JLabel();
+		messageB.setHorizontalAlignment(SwingConstants.CENTER);
+		messageB.setFont(new Font("Dialog", Font.PLAIN, 8));
 		// création de la boule
 		this.boule = new Boule(this.jeuServeur);
 		// calcul de la première position du personnage
@@ -131,6 +144,9 @@ public class Joueur extends Objet implements Global {
 		// positionnement et remplissage du message sous le perosnnage
 		this.message.setBounds(posX-10, posY+HAUTEURPERSO, LARGEURPERSO+10, HAUTEURMESSAGE);
 		this.message.setText(pseudo+" : "+vie);
+		// positionnement et remplissage du messageB sous le perosnnage
+		this.messageB.setBounds(posX-20, posY+HAUTEURPERSO, LARGEURPERSO+10, HAUTEURMESSAGE);
+		this.messageB.setText("boules"+" : "+NbrBoules);
 		// demande d'envoi à tous des modifications d'affichage
 		this.jeuServeur.envoiJeuATous();
 	}
@@ -207,6 +223,30 @@ public class Joueur extends Objet implements Global {
 	 */
 	public void gainVie() {
 		this.vie += GAIN;
+		affiche(MARCHE, etape);
+	}
+	
+	/**
+	 * Perte de boule tirée
+	 */
+	public void perteBoule( ) {
+		this.NbrBoules -= 1;
+		affiche(MARCHE, etape);
+	}
+	
+	/**
+	 * Gain de boules si un joueur a été touché
+	 */
+	public void gainBoules() {
+		this.NbrBoules += GAINBOULES;
+		affiche(MARCHE, etape);
+	}
+	
+	/**
+	 * Gain de boules si le joueur touché est mort
+	 */
+	public void gainMort() {
+		this.NbrBoules += GAINMORT;
 		affiche(MARCHE, etape);
 	}
 	
