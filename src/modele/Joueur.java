@@ -163,17 +163,33 @@ public class Joueur extends Objet implements Global {
 			switch(action){
 			case KeyEvent.VK_LEFT :
 				orientation = GAUCHE; 
-				posX = deplace(posX, action, -PAS, LARGEURARENE - LARGEURPERSO, lesJoueurs, lesMurs);
+				if (posX == 0) {
+					posX = LARGEURARENE - LARGEURPERSO;
+				}else {
+				    posX = deplace(posX, action, -PAS, LARGEURARENE - LARGEURPERSO, lesJoueurs, lesMurs);
+				}
 				break;
 			case KeyEvent.VK_RIGHT :
 				orientation = DROITE; 
-				posX = deplace(posX, action, PAS, LARGEURARENE - LARGEURPERSO, lesJoueurs, lesMurs);
+				if (posX == LARGEURARENE - LARGEURPERSO) {
+					posX = 0;
+				}else {
+				    posX = deplace(posX, action, PAS, LARGEURARENE - LARGEURPERSO, lesJoueurs, lesMurs);
+				}
 				break;
 			case KeyEvent.VK_UP :
-				posY = deplace(posY, action, -PAS, HAUTEURARENE - HAUTEURPERSO - HAUTEURMESSAGE, lesJoueurs, lesMurs) ;
+				if (posY == 0) {
+					posY = HAUTEURARENE - HAUTEURPERSO - HAUTEURMESSAGE*3;
+				}else {
+				    posY = deplace(posY, action, -PAS, HAUTEURARENE - HAUTEURPERSO - HAUTEURMESSAGE*3, lesJoueurs, lesMurs) ;
+				}
 				break;
 			case KeyEvent.VK_DOWN :
-				posY = deplace(posY,  action, PAS, HAUTEURARENE - HAUTEURPERSO - HAUTEURMESSAGE, lesJoueurs, lesMurs) ;
+				if (posY == HAUTEURARENE - HAUTEURPERSO - HAUTEURMESSAGE*3) {
+					posY = 0;
+				}else {
+				    posY = deplace(posY,  action, PAS, HAUTEURARENE - HAUTEURPERSO - HAUTEURMESSAGE*3, lesJoueurs, lesMurs) ;
+				}
 				break;	
 			case KeyEvent.VK_SPACE :
 				if(!this.boule.getjLabel().isVisible()) {
@@ -206,7 +222,7 @@ public class Joueur extends Objet implements Global {
 		position = Math.max(position, 0) ;
 		position = Math.min(position,  max) ;
 		if (action==KeyEvent.VK_LEFT || action==KeyEvent.VK_RIGHT) {
-			posX = position ;
+		    posX = position ;
 		}else{
 			posY = position ;
 		}
